@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 import { login } from '@/services/authService';
-import { useRouter } from 'vue-router';
+import {  useRouter } from 'vue-router';
 
-const router = useRouter
+const router = useRouter()
 const email = ref('')
 const password = ref('')
 
