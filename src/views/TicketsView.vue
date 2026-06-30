@@ -6,7 +6,8 @@ const tickets = ref([])
 const loading = ref(true)
 
 onMounted(async () => {
-    tickets.value = await getTickets()
+    const response = await getTickets()
+    tickets.value = response.ticketsAll ?? response.ticketUser ?? []
     loading.value = false
 })
 
@@ -19,7 +20,11 @@ onMounted(async () => {
         </p>
 
         <ul v-else>
-            <p>{{ tickets }}</p>
+            <li v-for="ticket in tickets">
+                <RouterLink :to="`/tickets/${ticket.id}`">
+                    #{{ ticket.id }} - {{ ticket.title }}
+                </RouterLink>
+            </li>
         </ul>
     </main>
 </template>

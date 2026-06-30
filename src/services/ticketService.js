@@ -5,3 +5,8 @@ export async function getTickets() {
 
     return response.data
 }
+export async function getTicket(id) {
+    const response = await api.get(`/tickets/${id}`)
+
+    return response.data
+}
